@@ -1,0 +1,1373 @@
+{
+  "summary": {
+    "time": "2026-11-11 16:01",
+    "label": "inline_code",
+    "k": 5,
+    "in_scope": 30,
+    "hit@5": 0.967,
+    "hit@1": 0.8,
+    "mrr": 0.878
+  },
+  "rows": [
+    {
+      "q": "How do I run code after returning a response?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/background-tasks/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 6.878,
+          "url": "https://fastapi.tiangolo.com/tutorial/background-tasks/",
+          "heading": "Background Tasks"
+        },
+        {
+          "n": 2,
+          "score": 4.141,
+          "url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+          "heading": "Return a `Response`"
+        },
+        {
+          "n": 3,
+          "score": 3.554,
+          "url": "https://fastapi.tiangolo.com/advanced/response-change-status-code/",
+          "heading": "Use case"
+        },
+        {
+          "n": 4,
+          "score": 3.534,
+          "url": "https://fastapi.tiangolo.com/tutorial/response-status-code/",
+          "heading": "Changing the default"
+        },
+        {
+          "n": 5,
+          "score": 3.447,
+          "url": "https://fastapi.tiangolo.com/advanced/response-change-status-code/",
+          "heading": "Use a `Response` parameter"
+        }
+      ]
+    },
+    {
+      "q": "How do I allow requests from a different domain in the browser?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/cors/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 3.673,
+          "url": "https://fastapi.tiangolo.com/tutorial/cors/",
+          "heading": "Use `CORSMiddleware`"
+        },
+        {
+          "n": 2,
+          "score": 1.407,
+          "url": "https://fastapi.tiangolo.com/tutorial/cors/",
+          "heading": "Steps"
+        },
+        {
+          "n": 3,
+          "score": 0.302,
+          "url": "https://fastapi.tiangolo.com/advanced/middleware/",
+          "heading": "`TrustedHostMiddleware`"
+        },
+        {
+          "n": 4,
+          "score": -1.329,
+          "url": "https://fastapi.tiangolo.com/tutorial/cors/",
+          "heading": "Use `CORSMiddleware`"
+        },
+        {
+          "n": 5,
+          "score": -1.504,
+          "url": "https://fastapi.tiangolo.com/advanced/behind-a-proxy/",
+          "heading": "Proxy Forwarded Headers"
+        }
+      ]
+    },
+    {
+      "q": "How do I declare a path parameter with a type?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/path-params/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 8.882,
+          "url": "https://fastapi.tiangolo.com/tutorial/path-params/",
+          "heading": "Path parameters with types"
+        },
+        {
+          "n": 2,
+          "score": 7.842,
+          "url": "https://fastapi.tiangolo.com/tutorial/path-params/",
+          "heading": "Declare a *path parameter*"
+        },
+        {
+          "n": 3,
+          "score": 6.5,
+          "url": "https://fastapi.tiangolo.com/tutorial/path-params/",
+          "heading": "Path convertor"
+        },
+        {
+          "n": 4,
+          "score": 6.263,
+          "url": "https://fastapi.tiangolo.com/tutorial/body/",
+          "heading": "Declare it as a parameter"
+        },
+        {
+          "n": 5,
+          "score": 5.676,
+          "url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/",
+          "heading": "Order the parameters as you need"
+        }
+      ]
+    },
+    {
+      "q": "How do I receive a JSON request body?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/body/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 6.93,
+          "url": "https://fastapi.tiangolo.com/tutorial/body/",
+          "heading": "Results"
+        },
+        {
+          "n": 2,
+          "score": 4.848,
+          "url": "https://fastapi.tiangolo.com/tutorial/handling-errors/",
+          "heading": "Use the `RequestValidationError` body"
+        },
+        {
+          "n": 3,
+          "score": 3.726,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-files/",
+          "heading": "What is \"Form Data\""
+        },
+        {
+          "n": 4,
+          "score": 3.48,
+          "url": "https://fastapi.tiangolo.com/tutorial/testing/",
+          "heading": "Extended testing file"
+        },
+        {
+          "n": 5,
+          "score": 3.298,
+          "url": "https://fastapi.tiangolo.com/tutorial/body/",
+          "heading": "Request Body"
+        }
+      ]
+    },
+    {
+      "q": "How do I make an optional query parameter with a default value?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/query-params/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 8.292,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params/",
+          "heading": "Required query parameters"
+        },
+        {
+          "n": 2,
+          "score": 7.899,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params/",
+          "heading": "Optional parameters"
+        },
+        {
+          "n": 3,
+          "score": 7.28,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params/",
+          "heading": "Defaults"
+        },
+        {
+          "n": 4,
+          "score": 7.047,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/",
+          "heading": "Required parameters and `None`"
+        },
+        {
+          "n": 5,
+          "score": 6.731,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/",
+          "heading": "`Query` as the default value or in `Annotated`"
+        }
+      ]
+    },
+    {
+      "q": "How can I limit the maximum length of a query string parameter?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 4.638,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/",
+          "heading": "Add `Query` to `Annotated` in the `q` parameter"
+        },
+        {
+          "n": 2,
+          "score": 4.392,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/",
+          "heading": "Alternative (old): `Query` as the default value"
+        },
+        {
+          "n": 3,
+          "score": 3.792,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/",
+          "heading": "Add more validations"
+        },
+        {
+          "n": 4,
+          "score": 2.484,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params/",
+          "heading": "Defaults"
+        },
+        {
+          "n": 5,
+          "score": 2.418,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/",
+          "heading": "Default values"
+        }
+      ]
+    },
+    {
+      "q": "How do I upload a file?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/request-files/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 5.387,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-files/",
+          "heading": "Optional File Upload"
+        },
+        {
+          "n": 2,
+          "score": 4.067,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-files/",
+          "heading": "Multiple File Uploads"
+        },
+        {
+          "n": 3,
+          "score": 3.944,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-files/",
+          "heading": "`UploadFile` with Additional Metadata"
+        },
+        {
+          "n": 4,
+          "score": 3.791,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-files/",
+          "heading": "`UploadFile`"
+        },
+        {
+          "n": 5,
+          "score": 3.596,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-files/",
+          "heading": "File Parameters with `UploadFile`"
+        }
+      ]
+    },
+    {
+      "q": "How do I read form fields instead of JSON?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/request-forms/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 7.821,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-forms/",
+          "heading": "About \"Form Fields\""
+        },
+        {
+          "n": 2,
+          "score": 7.253,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-files/",
+          "heading": "What is \"Form Data\""
+        },
+        {
+          "n": 3,
+          "score": 6.006,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-forms/",
+          "heading": "Form Data"
+        },
+        {
+          "n": 4,
+          "score": 2.122,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-forms/",
+          "heading": "Define `Form` parameters"
+        },
+        {
+          "n": 5,
+          "score": 1.405,
+          "url": "https://fastapi.tiangolo.com/tutorial/stream-json-lines/",
+          "heading": "JSON Lines"
+        }
+      ]
+    },
+    {
+      "q": "How do I read a cookie from the request?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/cookie-params/",
+      "rank": 3,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 2.019,
+          "url": "https://fastapi.tiangolo.com/tutorial/cookie-param-models/",
+          "heading": "Cookies with a Pydantic Model"
+        },
+        {
+          "n": 2,
+          "score": 1.965,
+          "url": "https://fastapi.tiangolo.com/reference/parameters/",
+          "heading": "Request Parameters"
+        },
+        {
+          "n": 3,
+          "score": 1.513,
+          "url": "https://fastapi.tiangolo.com/tutorial/cookie-params/",
+          "heading": "Declare `Cookie` parameters"
+        },
+        {
+          "n": 4,
+          "score": 1.323,
+          "url": "https://fastapi.tiangolo.com/advanced/using-request-directly/",
+          "heading": "Using the Request Directly"
+        },
+        {
+          "n": 5,
+          "score": -1.014,
+          "url": "https://fastapi.tiangolo.com/tutorial/cookie-params/",
+          "heading": "Import `Cookie`"
+        }
+      ]
+    },
+    {
+      "q": "How do I read custom request headers?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/header-params/",
+      "rank": null,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 4.819,
+          "url": "https://fastapi.tiangolo.com/advanced/response-headers/",
+          "heading": "Custom Headers"
+        },
+        {
+          "n": 2,
+          "score": 4.62,
+          "url": "https://fastapi.tiangolo.com/tutorial/handling-errors/",
+          "heading": "Add custom headers"
+        },
+        {
+          "n": 3,
+          "score": 3.215,
+          "url": "https://fastapi.tiangolo.com/how-to/custom-request-and-route/",
+          "heading": "Create a custom `GzipRequest` class"
+        },
+        {
+          "n": 4,
+          "score": 2.465,
+          "url": "https://fastapi.tiangolo.com/how-to/custom-request-and-route/",
+          "heading": "Accessing the request body in an exception handler"
+        },
+        {
+          "n": 5,
+          "score": 2.138,
+          "url": "https://fastapi.tiangolo.com/how-to/custom-request-and-route/",
+          "heading": "Use cases"
+        }
+      ]
+    },
+    {
+      "q": "How do I return a custom HTTP error with a status code?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/handling-errors/",
+      "rank": 2,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 6.285,
+          "url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+          "heading": "`RedirectResponse`"
+        },
+        {
+          "n": 2,
+          "score": 6.093,
+          "url": "https://fastapi.tiangolo.com/tutorial/handling-errors/",
+          "heading": "Add custom headers"
+        },
+        {
+          "n": 3,
+          "score": 5.794,
+          "url": "https://fastapi.tiangolo.com/advanced/response-change-status-code/",
+          "heading": "Use case"
+        },
+        {
+          "n": 4,
+          "score": 5.263,
+          "url": "https://fastapi.tiangolo.com/advanced/additional-status-codes/",
+          "heading": "Additional status codes"
+        },
+        {
+          "n": 5,
+          "score": 5.029,
+          "url": "https://fastapi.tiangolo.com/tutorial/response-status-code/",
+          "heading": "About HTTP status codes"
+        }
+      ]
+    },
+    {
+      "q": "How do I filter fields in the response, like hiding a password?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/response-model/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 2.266,
+          "url": "https://fastapi.tiangolo.com/tutorial/response-model/",
+          "heading": "Return Type and Data Filtering"
+        },
+        {
+          "n": 2,
+          "score": -0.96,
+          "url": "https://fastapi.tiangolo.com/tutorial/response-model/",
+          "heading": "Type Annotations and Tooling"
+        },
+        {
+          "n": 3,
+          "score": -3.087,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-param-models/",
+          "heading": "Forbid Extra Query Parameters"
+        },
+        {
+          "n": 4,
+          "score": -3.481,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-form-models/",
+          "heading": "Forbid Extra Form Fields"
+        },
+        {
+          "n": 5,
+          "score": -3.589,
+          "url": "https://fastapi.tiangolo.com/how-to/general/",
+          "heading": "Filter Data - Security"
+        }
+      ]
+    },
+    {
+      "q": "How do I set the HTTP status code for a path operation?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/",
+      "rank": 2,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 7.474,
+          "url": "https://fastapi.tiangolo.com/tutorial/path-operation-configuration/",
+          "heading": "Response Status Code"
+        },
+        {
+          "n": 2,
+          "score": 6.559,
+          "url": "https://fastapi.tiangolo.com/tutorial/response-status-code/",
+          "heading": "Response Status Code"
+        },
+        {
+          "n": 3,
+          "score": 6.412,
+          "url": "https://fastapi.tiangolo.com/advanced/additional-status-codes/",
+          "heading": "Additional status codes"
+        },
+        {
+          "n": 4,
+          "score": 5.199,
+          "url": "https://fastapi.tiangolo.com/advanced/additional-status-codes/",
+          "heading": "Additional Status Codes"
+        },
+        {
+          "n": 5,
+          "score": 4.609,
+          "url": "https://fastapi.tiangolo.com/tutorial/first-steps/",
+          "heading": "Step 3: create a *path operation*"
+        }
+      ]
+    },
+    {
+      "q": "How do I add a middleware that runs for every request?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/middleware/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 8.454,
+          "url": "https://fastapi.tiangolo.com/tutorial/middleware/",
+          "heading": "Middleware"
+        },
+        {
+          "n": 2,
+          "score": 7.112,
+          "url": "https://fastapi.tiangolo.com/tutorial/middleware/",
+          "heading": "Multiple middleware execution order"
+        },
+        {
+          "n": 3,
+          "score": 6.316,
+          "url": "https://fastapi.tiangolo.com/tutorial/middleware/",
+          "heading": "Before and after the `response`"
+        },
+        {
+          "n": 4,
+          "score": 5.368,
+          "url": "https://fastapi.tiangolo.com/tutorial/middleware/",
+          "heading": "Create a middleware"
+        },
+        {
+          "n": 5,
+          "score": 3.864,
+          "url": "https://fastapi.tiangolo.com/advanced/middleware/",
+          "heading": "`HTTPSRedirectMiddleware`"
+        }
+      ]
+    },
+    {
+      "q": "How do I test my app with a test client?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/testing/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 5.929,
+          "url": "https://fastapi.tiangolo.com/tutorial/testing/",
+          "heading": "Testing file"
+        },
+        {
+          "n": 2,
+          "score": 5.784,
+          "url": "https://fastapi.tiangolo.com/reference/testclient/",
+          "heading": "Test Client - `TestClient`"
+        },
+        {
+          "n": 3,
+          "score": 4.947,
+          "url": "https://fastapi.tiangolo.com/tutorial/testing/",
+          "heading": "Extended testing file"
+        },
+        {
+          "n": 4,
+          "score": 4.744,
+          "url": "https://fastapi.tiangolo.com/advanced/settings/",
+          "heading": "Settings and testing"
+        },
+        {
+          "n": 5,
+          "score": 4.31,
+          "url": "https://fastapi.tiangolo.com/tutorial/testing/",
+          "heading": "Using `TestClient`"
+        }
+      ]
+    },
+    {
+      "q": "How do I serve static files?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/static-files/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 8.35,
+          "url": "https://fastapi.tiangolo.com/tutorial/static-files/",
+          "heading": "Static Files"
+        },
+        {
+          "n": 2,
+          "score": 7.046,
+          "url": "https://fastapi.tiangolo.com/reference/staticfiles/",
+          "heading": "Static Files - `StaticFiles`"
+        },
+        {
+          "n": 3,
+          "score": 5.461,
+          "url": "https://fastapi.tiangolo.com/how-to/custom-docs-ui-assets/",
+          "heading": "Custom Docs UI Static Assets (Self-Hosting)"
+        },
+        {
+          "n": 4,
+          "score": 5.445,
+          "url": "https://fastapi.tiangolo.com/tutorial/frontend/",
+          "heading": "Frontend"
+        },
+        {
+          "n": 5,
+          "score": 4.917,
+          "url": "https://fastapi.tiangolo.com/how-to/custom-docs-ui-assets/",
+          "heading": "Test the static files"
+        }
+      ]
+    },
+    {
+      "q": "How do I share logic between endpoints with dependency injection?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/dependencies/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 3.041,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/",
+          "heading": "What is \"Dependency Injection\""
+        },
+        {
+          "n": 2,
+          "score": 1.124,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/",
+          "heading": "Simple and Powerful"
+        },
+        {
+          "n": 3,
+          "score": -0.935,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/",
+          "heading": "Simple usage"
+        },
+        {
+          "n": 4,
+          "score": -2.451,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/",
+          "heading": "Recap"
+        },
+        {
+          "n": 5,
+          "score": -3.391,
+          "url": "https://fastapi.tiangolo.com/features/",
+          "heading": "Dependency Injection"
+        }
+      ]
+    },
+    {
+      "q": "How do I run code at application startup and shutdown?",
+      "expected_url": "https://fastapi.tiangolo.com/advanced/events/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 3.929,
+          "url": "https://fastapi.tiangolo.com/advanced/events/",
+          "heading": "Alternative Events (deprecated)"
+        },
+        {
+          "n": 2,
+          "score": 2.908,
+          "url": "https://fastapi.tiangolo.com/advanced/events/",
+          "heading": "`shutdown` event"
+        },
+        {
+          "n": 3,
+          "score": 1.458,
+          "url": "https://fastapi.tiangolo.com/tutorial/first-steps/",
+          "heading": "First Steps"
+        },
+        {
+          "n": 4,
+          "score": 0.037,
+          "url": "https://fastapi.tiangolo.com/deployment/docker/",
+          "heading": "Running on Startup and Restarts"
+        },
+        {
+          "n": 5,
+          "score": -0.144,
+          "url": "https://fastapi.tiangolo.com/advanced/events/",
+          "heading": "Lifespan Events"
+        }
+      ]
+    },
+    {
+      "q": "How do I add WebSocket support?",
+      "expected_url": "https://fastapi.tiangolo.com/advanced/websockets/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 5.074,
+          "url": "https://fastapi.tiangolo.com/advanced/websockets/",
+          "heading": "Install `websockets`"
+        },
+        {
+          "n": 2,
+          "score": 3.228,
+          "url": "https://fastapi.tiangolo.com/advanced/websockets/",
+          "heading": "Create a `websocket`"
+        },
+        {
+          "n": 3,
+          "score": 2.974,
+          "url": "https://fastapi.tiangolo.com/advanced/websockets/",
+          "heading": "Using `Depends` and others"
+        },
+        {
+          "n": 4,
+          "score": 2.599,
+          "url": "https://fastapi.tiangolo.com/advanced/websockets/",
+          "heading": "Try it"
+        },
+        {
+          "n": 5,
+          "score": 2.462,
+          "url": "https://fastapi.tiangolo.com/advanced/websockets/",
+          "heading": "In production"
+        }
+      ]
+    },
+    {
+      "q": "How do I run my app in a Docker container?",
+      "expected_url": "https://fastapi.tiangolo.com/deployment/docker/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 5.693,
+          "url": "https://fastapi.tiangolo.com/deployment/docker/",
+          "heading": "Single Container"
+        },
+        {
+          "n": 2,
+          "score": 5.454,
+          "url": "https://fastapi.tiangolo.com/deployment/docker/",
+          "heading": "One Load Balancer - Multiple Worker Containers"
+        },
+        {
+          "n": 3,
+          "score": 4.787,
+          "url": "https://fastapi.tiangolo.com/deployment/docker/",
+          "heading": "Build the Docker Image"
+        },
+        {
+          "n": 4,
+          "score": 4.553,
+          "url": "https://fastapi.tiangolo.com/deployment/docker/",
+          "heading": "Running on Startup and Restarts"
+        },
+        {
+          "n": 5,
+          "score": 4.292,
+          "url": "https://fastapi.tiangolo.com/deployment/docker/",
+          "heading": "Containers with Multiple Processes and Special Cases"
+        }
+      ]
+    },
+    {
+      "q": "How do I structure a larger application with multiple files?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 6.906,
+          "url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/",
+          "heading": "Bigger Applications - Multiple Files"
+        },
+        {
+          "n": 2,
+          "score": 5.414,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/global-dependencies/",
+          "heading": "Dependencies for groups of *path operations*"
+        },
+        {
+          "n": 3,
+          "score": 5.275,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-in-path-operation-decorators/",
+          "heading": "Dependencies for a group of *path operations*"
+        },
+        {
+          "n": 4,
+          "score": 5.111,
+          "url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/",
+          "heading": "`APIRouter`"
+        },
+        {
+          "n": 5,
+          "score": 5.001,
+          "url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/",
+          "heading": "An example file structure"
+        }
+      ]
+    },
+    {
+      "q": "How do I connect to a SQL database?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/sql-databases/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 2.558,
+          "url": "https://fastapi.tiangolo.com/tutorial/sql-databases/",
+          "heading": "Create an Engine"
+        },
+        {
+          "n": 2,
+          "score": -0.292,
+          "url": "https://fastapi.tiangolo.com/tutorial/sql-databases/",
+          "heading": "Create Database Tables on Startup"
+        },
+        {
+          "n": 3,
+          "score": -0.37,
+          "url": "https://fastapi.tiangolo.com/tutorial/sql-databases/",
+          "heading": "Recap"
+        },
+        {
+          "n": 4,
+          "score": -0.815,
+          "url": "https://fastapi.tiangolo.com/tutorial/sql-databases/",
+          "heading": "Create Models"
+        },
+        {
+          "n": 5,
+          "score": -1.571,
+          "url": "https://fastapi.tiangolo.com/tutorial/sql-databases/",
+          "heading": "Read One Hero"
+        }
+      ]
+    },
+    {
+      "q": "When should I use async def versus a normal def?",
+      "expected_url": "https://fastapi.tiangolo.com/async/",
+      "rank": 2,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 5.002,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/",
+          "heading": "To `async` or not to `async`"
+        },
+        {
+          "n": 2,
+          "score": 4.875,
+          "url": "https://fastapi.tiangolo.com/async/",
+          "heading": "Path operation functions"
+        },
+        {
+          "n": 3,
+          "score": 3.923,
+          "url": "https://fastapi.tiangolo.com/async/",
+          "heading": "Other utility functions"
+        },
+        {
+          "n": 4,
+          "score": 3.419,
+          "url": "https://fastapi.tiangolo.com/async/",
+          "heading": "In a hurry?"
+        },
+        {
+          "n": 5,
+          "score": 2.454,
+          "url": "https://fastapi.tiangolo.com/async/",
+          "heading": "`async` and `await`"
+        }
+      ]
+    },
+    {
+      "q": "How do I add tags and a description to the OpenAPI docs?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/metadata/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 6.431,
+          "url": "https://fastapi.tiangolo.com/tutorial/metadata/",
+          "heading": "Create metadata for tags"
+        },
+        {
+          "n": 2,
+          "score": 6.222,
+          "url": "https://fastapi.tiangolo.com/tutorial/metadata/",
+          "heading": "Metadata for tags"
+        },
+        {
+          "n": 3,
+          "score": 5.873,
+          "url": "https://fastapi.tiangolo.com/how-to/general/",
+          "heading": "Documentation Tags - OpenAPI"
+        },
+        {
+          "n": 4,
+          "score": 4.724,
+          "url": "https://fastapi.tiangolo.com/how-to/general/",
+          "heading": "Documentation Summary and Description - OpenAPI"
+        },
+        {
+          "n": 5,
+          "score": 2.25,
+          "url": "https://fastapi.tiangolo.com/tutorial/metadata/",
+          "heading": "Metadata for API"
+        }
+      ]
+    },
+    {
+      "q": "How do I implement OAuth2 password flow with JWT tokens?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 6.727,
+          "url": "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/",
+          "heading": "OAuth2 with Password (and hashing), Bearer with JWT tokens"
+        },
+        {
+          "n": 2,
+          "score": 6.237,
+          "url": "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/",
+          "heading": "Handle JWT tokens"
+        },
+        {
+          "n": 3,
+          "score": 6.236,
+          "url": "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/",
+          "heading": "Advanced usage with `scopes`"
+        },
+        {
+          "n": 4,
+          "score": 6.135,
+          "url": "https://fastapi.tiangolo.com/tutorial/security/first-steps/",
+          "heading": "The `password` flow"
+        },
+        {
+          "n": 5,
+          "score": 5.875,
+          "url": "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/",
+          "heading": "Update the `/token` *path operation*"
+        }
+      ]
+    },
+    {
+      "q": "How do I return HTML instead of JSON?",
+      "expected_url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 5.885,
+          "url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+          "heading": "Custom Response - HTML, Stream, File, others"
+        },
+        {
+          "n": 2,
+          "score": 5.616,
+          "url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+          "heading": "Custom response class"
+        },
+        {
+          "n": 3,
+          "score": 4.719,
+          "url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+          "heading": "`JSONResponse`"
+        },
+        {
+          "n": 4,
+          "score": 4.599,
+          "url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+          "heading": "Default response class"
+        },
+        {
+          "n": 5,
+          "score": 4.152,
+          "url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+          "heading": "JSON Responses"
+        }
+      ]
+    },
+    {
+      "q": "How do I add validation to fields inside a request body model?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/body-fields/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 4.965,
+          "url": "https://fastapi.tiangolo.com/tutorial/body-fields/",
+          "heading": "Body - Fields"
+        },
+        {
+          "n": 2,
+          "score": 3.701,
+          "url": "https://fastapi.tiangolo.com/tutorial/body-fields/",
+          "heading": "Recap"
+        },
+        {
+          "n": 3,
+          "score": 1.521,
+          "url": "https://fastapi.tiangolo.com/advanced/json-base64-bytes/",
+          "heading": "Pydantic `bytes`"
+        },
+        {
+          "n": 4,
+          "score": 1.351,
+          "url": "https://fastapi.tiangolo.com/tutorial/body/",
+          "heading": "Results"
+        },
+        {
+          "n": 5,
+          "score": 0.727,
+          "url": "https://fastapi.tiangolo.com/how-to/custom-request-and-route/",
+          "heading": "Accessing the request body in an exception handler"
+        }
+      ]
+    },
+    {
+      "q": "How do I use a dependency with yield to clean up resources?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 5.418,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/",
+          "heading": "Dependencies with yield"
+        },
+        {
+          "n": 2,
+          "score": 5.064,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/",
+          "heading": "Early exit and `scope`"
+        },
+        {
+          "n": 3,
+          "score": 4.057,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/",
+          "heading": "A dependency with `yield` and `try`"
+        },
+        {
+          "n": 4,
+          "score": 3.282,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/",
+          "heading": "A database dependency with `yield`"
+        },
+        {
+          "n": 5,
+          "score": 2.846,
+          "url": "https://fastapi.tiangolo.com/advanced/advanced-dependencies/",
+          "heading": "Dependencies with `yield` and `StreamingResponse`, Technical Details"
+        }
+      ]
+    },
+    {
+      "q": "How do I run my app under a debugger?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/debugging/",
+      "rank": 1,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 5.877,
+          "url": "https://fastapi.tiangolo.com/tutorial/debugging/",
+          "heading": "Run your code with your debugger"
+        },
+        {
+          "n": 2,
+          "score": 0.484,
+          "url": "https://fastapi.tiangolo.com/tutorial/debugging/",
+          "heading": "About `__name__ == \"__main__\"`"
+        },
+        {
+          "n": 3,
+          "score": -5.386,
+          "url": "https://fastapi.tiangolo.com/tutorial/first-steps/",
+          "heading": "Recap"
+        },
+        {
+          "n": 4,
+          "score": -5.968,
+          "url": "https://fastapi.tiangolo.com/tutorial/first-steps/",
+          "heading": "Configure the app `entrypoint` in `pyproject.toml`"
+        },
+        {
+          "n": 5,
+          "score": -6.577,
+          "url": "https://fastapi.tiangolo.com/tutorial/",
+          "heading": "Run the code"
+        }
+      ]
+    },
+    {
+      "q": "How do I render Jinja2 templates?",
+      "expected_url": "https://fastapi.tiangolo.com/advanced/templates/",
+      "rank": 2,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 7.903,
+          "url": "https://fastapi.tiangolo.com/reference/templating/",
+          "heading": "Templating - `Jinja2Templates`"
+        },
+        {
+          "n": 2,
+          "score": 7.685,
+          "url": "https://fastapi.tiangolo.com/advanced/templates/",
+          "heading": "Using `Jinja2Templates`"
+        },
+        {
+          "n": 3,
+          "score": 5.385,
+          "url": "https://fastapi.tiangolo.com/advanced/templates/",
+          "heading": "Template `url_for` Arguments"
+        },
+        {
+          "n": 4,
+          "score": 4.787,
+          "url": "https://fastapi.tiangolo.com/advanced/templates/",
+          "heading": "Template Context Values"
+        },
+        {
+          "n": 5,
+          "score": 4.779,
+          "url": "https://fastapi.tiangolo.com/advanced/templates/",
+          "heading": "URL paths in templates"
+        }
+      ]
+    },
+    {
+      "q": "What is the capital of France?",
+      "expected_url": null,
+      "rank": null,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": -11.154,
+          "url": "https://fastapi.tiangolo.com/tutorial/cors/",
+          "heading": "Steps"
+        },
+        {
+          "n": 2,
+          "score": -11.215,
+          "url": "https://fastapi.tiangolo.com/tutorial/cors/",
+          "heading": "Origin"
+        },
+        {
+          "n": 3,
+          "score": -11.228,
+          "url": "https://fastapi.tiangolo.com/tutorial/first-steps/",
+          "heading": "Configure the app `entrypoint` in `pyproject.toml`"
+        },
+        {
+          "n": 4,
+          "score": -11.228,
+          "url": "https://fastapi.tiangolo.com/deployment/https/",
+          "heading": "Let's Encrypt"
+        },
+        {
+          "n": 5,
+          "score": -11.23,
+          "url": "https://fastapi.tiangolo.com/tutorial/frontend/",
+          "heading": "Frontend"
+        }
+      ]
+    },
+    {
+      "q": "How do I train a neural network in PyTorch?",
+      "expected_url": null,
+      "rank": null,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": -10.235,
+          "url": "https://fastapi.tiangolo.com/advanced/settings/",
+          "heading": "Create the `Settings` object"
+        },
+        {
+          "n": 2,
+          "score": -10.589,
+          "url": "https://fastapi.tiangolo.com/_llm-test/",
+          "heading": "HTML \"dfn\" elements"
+        },
+        {
+          "n": 3,
+          "score": -10.649,
+          "url": "https://fastapi.tiangolo.com/tutorial/body/",
+          "heading": "Editor support"
+        },
+        {
+          "n": 4,
+          "score": -10.895,
+          "url": "https://fastapi.tiangolo.com/tutorial/schema-extra-example/",
+          "heading": "Extra JSON Schema data in Pydantic models"
+        },
+        {
+          "n": 5,
+          "score": -10.998,
+          "url": "https://fastapi.tiangolo.com/tutorial/response-model/",
+          "heading": "Response Model - Return Type"
+        }
+      ]
+    },
+    {
+      "q": "How do I configure middleware in Django?",
+      "expected_url": null,
+      "rank": null,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 4.305,
+          "url": "https://fastapi.tiangolo.com/advanced/wsgi/",
+          "heading": "Using `WSGIMiddleware`"
+        },
+        {
+          "n": 2,
+          "score": 3.263,
+          "url": "https://fastapi.tiangolo.com/tutorial/cors/",
+          "heading": "Use `CORSMiddleware`"
+        },
+        {
+          "n": 3,
+          "score": 0.558,
+          "url": "https://fastapi.tiangolo.com/tutorial/middleware/",
+          "heading": "Multiple middleware execution order"
+        },
+        {
+          "n": 4,
+          "score": -0.73,
+          "url": "https://fastapi.tiangolo.com/advanced/middleware/",
+          "heading": "Adding ASGI middlewares"
+        },
+        {
+          "n": 5,
+          "score": -0.896,
+          "url": "https://fastapi.tiangolo.com/advanced/wsgi/",
+          "heading": "Including WSGI - Flask, Django, others"
+        }
+      ]
+    },
+    {
+      "q": "What is the best pizza topping?",
+      "expected_url": null,
+      "rank": null,
+      "refused": false,
+      "answer": null,
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": -10.814,
+          "url": "https://fastapi.tiangolo.com/async/",
+          "heading": "Concurrent Burgers"
+        },
+        {
+          "n": 2,
+          "score": -10.943,
+          "url": "https://fastapi.tiangolo.com/async/",
+          "heading": "Parallel Burgers"
+        },
+        {
+          "n": 3,
+          "score": -10.987,
+          "url": "https://fastapi.tiangolo.com/alternatives/",
+          "heading": "[Starlette](https://starlette.dev/)"
+        },
+        {
+          "n": 4,
+          "score": -11.215,
+          "url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+          "heading": "`JSONResponse`"
+        },
+        {
+          "n": 5,
+          "score": -11.221,
+          "url": "https://fastapi.tiangolo.com/alternatives/",
+          "heading": "[Sanic](https://sanic.readthedocs.io/en/latest/)"
+        }
+      ]
+    }
+  ]
+}

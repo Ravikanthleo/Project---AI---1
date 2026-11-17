@@ -1,0 +1,1481 @@
+{
+  "summary": {
+    "time": "2026-11-11 16:14",
+    "label": "full_best",
+    "k": 5,
+    "in_scope": 30,
+    "hit@5": 0.967,
+    "hit@1": 0.8,
+    "mrr": 0.878,
+    "false_refusals": 1,
+    "oos_refused": "4/4",
+    "avg_faithfulness": 4.88,
+    "avg_relevance": 4.54
+  },
+  "rows": [
+    {
+      "q": "How do I run code after returning a response?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/background-tasks/",
+      "rank": 1,
+      "refused": false,
+      "answer": "Use background tasks. They let you define operations that run *after* returning a response [1].\n\nThis is useful when the client doesn't need to wait for the operation to finish before receiving the response [1]. Examples include:\n\n- **Email notifications:** Connecting to an email server and sending a message can take several seconds, so you can return the response right away and send the email in the background [1].\n- **Data processing:** For a file that needs a slow process, you can return an \"Accepted\" (HTTP 202) response and process the file in the background [1].\n\nThe provided passages don't include a code example of how to declare a background task, so I can't show the exact syntax from the docs.",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 3,
+        "reason": "Every claim is supported by passage [1] and the answer honestly notes the missing code example, but it only explains the concept and use cases and never shows how to run code after a response, so it only partly answers the how-to question."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 6.878,
+          "url": "https://fastapi.tiangolo.com/tutorial/background-tasks/",
+          "heading": "Background Tasks"
+        },
+        {
+          "n": 2,
+          "score": 4.141,
+          "url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+          "heading": "Return a `Response`"
+        },
+        {
+          "n": 3,
+          "score": 3.554,
+          "url": "https://fastapi.tiangolo.com/advanced/response-change-status-code/",
+          "heading": "Use case"
+        },
+        {
+          "n": 4,
+          "score": 3.534,
+          "url": "https://fastapi.tiangolo.com/tutorial/response-status-code/",
+          "heading": "Changing the default"
+        },
+        {
+          "n": 5,
+          "score": 3.447,
+          "url": "https://fastapi.tiangolo.com/advanced/response-change-status-code/",
+          "heading": "Use a `Response` parameter"
+        }
+      ]
+    },
+    {
+      "q": "How do I allow requests from a different domain in the browser?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/cors/",
+      "rank": 1,
+      "refused": false,
+      "answer": "Use `CORSMiddleware` to allow cross-origin requests from a browser. The steps are:\n\n- Import `CORSMiddleware`, create a list of allowed origins as strings, and add it as middleware to your FastAPI app [4].\n- Include the frontend's origin in that list. For example, a frontend at `http://localhost:8080` talking to a backend at `http://localhost` needs `http://localhost:8080` in the allowed origins [2].\n\n```python\nfrom fastapi import FastAPI\nfrom fastapi.middleware.cors import CORSMiddleware\n\napp = FastAPI()\n\norigins = [\n    \"http://localhost.tiangolo.com\",\n    \"https://localhost.tiangolo.com\",\n    \"http://localhost\",\n    \"http://localhost:8080\",\n]\n\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\n```\n[4]\n\nThe defaults are restrictive, so you must explicitly enable the origins, methods, or headers you need [1]. Supported arguments include:\n\n- `allow_origins`: a list of permitted origins, or `['*']` for any origin [1].\n- `allow_origin_regex`: a regex to match permitted origins [1].\n- `allow_methods`: allowed HTTP methods, defaulting to `['GET']` [1].\n- `allow_headers`: supported request headers, defaulting to `[]` [1].\n- `allow_credentials`: support for cookies, defaulting to `False` [1].\n\nIf `allow_credentials` is `True`, then `allow_origins`, `allow_methods` and `allow_headers` cannot be `['*']`. They must be explicitly specified [1].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "Every claim, including the code example, defaults, and the credentials/wildcard restriction, is supported by passages [1], [2], and [4], and the answer directly explains how to use CORSMiddleware to allow cross-origin requests."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 3.673,
+          "url": "https://fastapi.tiangolo.com/tutorial/cors/",
+          "heading": "Use `CORSMiddleware`"
+        },
+        {
+          "n": 2,
+          "score": 1.407,
+          "url": "https://fastapi.tiangolo.com/tutorial/cors/",
+          "heading": "Steps"
+        },
+        {
+          "n": 3,
+          "score": 0.302,
+          "url": "https://fastapi.tiangolo.com/advanced/middleware/",
+          "heading": "`TrustedHostMiddleware`"
+        },
+        {
+          "n": 4,
+          "score": -1.329,
+          "url": "https://fastapi.tiangolo.com/tutorial/cors/",
+          "heading": "Use `CORSMiddleware`"
+        },
+        {
+          "n": 5,
+          "score": -1.504,
+          "url": "https://fastapi.tiangolo.com/advanced/behind-a-proxy/",
+          "heading": "Proxy Forwarded Headers"
+        }
+      ]
+    },
+    {
+      "q": "How do I declare a path parameter with a type?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/path-params/",
+      "rank": 1,
+      "refused": false,
+      "answer": "You declare the type of a path parameter in the function, using standard Python type annotations [1]:\n\n```python\nfrom fastapi import FastAPI\n\napp = FastAPI()\n\n\n@app.get(\"/items/{item_id}\")\nasync def read_item(item_id: int):\n    return {\"item_id\": item_id}\n```\n\nHere, `item_id` is declared to be an `int` [1]. This also gives you editor support inside your function, with error checks, completion, etc. [1]\n\nYou can also use an enum class as the type. For example, `model_name: ModelName`, where `ModelName` is a `str, Enum` subclass [2].\n\nIf the parameter needs to contain a path, you can use Starlette's path convertor, `/files/{file_path:path}`, together with a `str` annotation [3].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "The core answer and code match passage [1] exactly, and the enum and path convertor additions are accurately drawn from passages [2] and [3], though the extras are slightly beyond the question's scope."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 8.882,
+          "url": "https://fastapi.tiangolo.com/tutorial/path-params/",
+          "heading": "Path parameters with types"
+        },
+        {
+          "n": 2,
+          "score": 7.842,
+          "url": "https://fastapi.tiangolo.com/tutorial/path-params/",
+          "heading": "Declare a *path parameter*"
+        },
+        {
+          "n": 3,
+          "score": 6.5,
+          "url": "https://fastapi.tiangolo.com/tutorial/path-params/",
+          "heading": "Path convertor"
+        },
+        {
+          "n": 4,
+          "score": 6.263,
+          "url": "https://fastapi.tiangolo.com/tutorial/body/",
+          "heading": "Declare it as a parameter"
+        },
+        {
+          "n": 5,
+          "score": 5.676,
+          "url": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations/",
+          "heading": "Order the parameters as you need"
+        }
+      ]
+    },
+    {
+      "q": "How do I receive a JSON request body?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/body/",
+      "rank": 1,
+      "refused": false,
+      "answer": "Declare the request body with a Pydantic model [5]. Use one of `POST` (the most common), `PUT`, `DELETE` or `PATCH` to send it [5].\n\nDeclare the model as the type of a function parameter. FastAPI will then do the following [1]:\n- Read the body of the request as JSON.\n- Convert the corresponding types, if needed.\n- Validate the data, and return a clear error showing where the incorrect data is if it's invalid.\n- Give you the received data in the parameter, for example `item`, with editor support for its attributes and types.\n\nAn example from the docs [2]:\n\n```python\nclass Item(BaseModel):\n    title: str\n    size: int\n\n\n@app.post(\"/items/\")\nasync def create_item(item: Item):\n    return item\n```\n\nSending a body with `GET` is discouraged. Its behavior is undefined in the specifications, though FastAPI supports it for extreme use cases [5].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "Every claim is supported by passages [1], [2], and [5] with correct citations, and the answer directly explains declaring a Pydantic model parameter so FastAPI reads the JSON body, with a code example."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 6.93,
+          "url": "https://fastapi.tiangolo.com/tutorial/body/",
+          "heading": "Results"
+        },
+        {
+          "n": 2,
+          "score": 4.848,
+          "url": "https://fastapi.tiangolo.com/tutorial/handling-errors/",
+          "heading": "Use the `RequestValidationError` body"
+        },
+        {
+          "n": 3,
+          "score": 3.726,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-files/",
+          "heading": "What is \"Form Data\""
+        },
+        {
+          "n": 4,
+          "score": 3.48,
+          "url": "https://fastapi.tiangolo.com/tutorial/testing/",
+          "heading": "Extended testing file"
+        },
+        {
+          "n": 5,
+          "score": 3.298,
+          "url": "https://fastapi.tiangolo.com/tutorial/body/",
+          "heading": "Request Body"
+        }
+      ]
+    },
+    {
+      "q": "How do I make an optional query parameter with a default value?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/query-params/",
+      "rank": 1,
+      "refused": false,
+      "answer": "Give the parameter a default value in the function signature. A query parameter with a default is not required [1].\n\n- **A concrete default:** `skip: int = 0` gives `skip` a default of `0` [1]. If the client omits it, the default is used. For example, `?skip=20` gives `skip=20`, while an omitted `limit` keeps its default of `10` [3].\n- **`None` as the default:** To make the parameter optional without a specific value, set the default to `None`, as in `q: str | None = None` [1][2].\n\n```python\n@app.get(\"/items/{item_id}\")\nasync def read_user_item(\n    item_id: str, needy: str, skip: int = 0, limit: int | None = None\n):\n    item = {\"item_id\": item_id, \"needy\": needy, \"skip\": skip, \"limit\": limit}\n    return item\n```\n\nHere `needy` is required, `skip` is an `int` with a default of `0`, and `limit` is an optional `int` [1].\n\nIf you use `Query` inside `Annotated`, don't pass `default` to `Query`. Use the function parameter's default instead, for example `q: Annotated[str, Query()] = \"rick\"` [5].\n\nNote that `str | None` alone doesn't make a parameter optional. Without a default, it is still required [4].",
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 8.292,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params/",
+          "heading": "Required query parameters"
+        },
+        {
+          "n": 2,
+          "score": 7.899,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params/",
+          "heading": "Optional parameters"
+        },
+        {
+          "n": 3,
+          "score": 7.28,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params/",
+          "heading": "Defaults"
+        },
+        {
+          "n": 4,
+          "score": 7.047,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/",
+          "heading": "Required parameters and `None`"
+        },
+        {
+          "n": 5,
+          "score": 6.731,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/",
+          "heading": "`Query` as the default value or in `Annotated`"
+        }
+      ]
+    },
+    {
+      "q": "How can I limit the maximum length of a query string parameter?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/",
+      "rank": 1,
+      "refused": false,
+      "answer": "Use `Query` with the `max_length` parameter, placed inside `Annotated`:\n\n```python\nfrom typing import Annotated\n\nfrom fastapi import FastAPI, Query\n\napp = FastAPI()\n\n\n@app.get(\"/items/\")\nasync def read_items(q: Annotated[str | None, Query(max_length=50)] = None):\n    results = {\"items\": [{\"item_id\": \"Foo\"}, {\"item_id\": \"Bar\"}]}\n    if q:\n        results.update({\"q\": q})\n    return results\n```\n[1]\n\nThe default is still `None`, so the parameter stays optional. `Query(max_length=50)` tells FastAPI to apply additional validation, limiting the value to a maximum of 50 characters. [1] FastAPI will then validate the data, show a clear error to the client when it's invalid, and document the parameter in the OpenAPI schema (and the automatic docs UI). [1]\n\nYou can also combine it with a minimum length: `Query(min_length=3, max_length=50)`. [3]\n\n**Older style:** Before FastAPI 0.95.0, `Query` had to be used as the default value instead: `q: str | None = Query(default=None, max_length=50)`. [2] You may still see this in existing code, but for new code the docs recommend using `Annotated` whenever possible. [2]",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "Every claim, including the Annotated example, the validation behavior, min_length combination, and the older default-value style, matches the passages with correct citations, and it directly answers the question."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 4.638,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/",
+          "heading": "Add `Query` to `Annotated` in the `q` parameter"
+        },
+        {
+          "n": 2,
+          "score": 4.392,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/",
+          "heading": "Alternative (old): `Query` as the default value"
+        },
+        {
+          "n": 3,
+          "score": 3.792,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/",
+          "heading": "Add more validations"
+        },
+        {
+          "n": 4,
+          "score": 2.484,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params/",
+          "heading": "Defaults"
+        },
+        {
+          "n": 5,
+          "score": 2.418,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/",
+          "heading": "Default values"
+        }
+      ]
+    },
+    {
+      "q": "How do I upload a file?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/request-files/",
+      "rank": 1,
+      "refused": false,
+      "answer": "Declare a file parameter in your path operation function. You can use `UploadFile` or `bytes` with `File()`:\n\n```python\nfrom typing import Annotated\n\nfrom fastapi import FastAPI, File, UploadFile\n\napp = FastAPI()\n\n\n@app.post(\"/files/\")\nasync def create_file(file: Annotated[bytes, File()]):\n    return {\"file_size\": len(file)}\n\n\n@app.post(\"/uploadfile/\")\nasync def create_upload_file(file: UploadFile):\n    return {\"filename\": file.filename}\n```\n[5]\n\n**Why `UploadFile` is usually better than `bytes`:**\n- You don't need `File()` in the parameter's default value [5].\n- It uses a \"spooled\" file, which is kept in memory up to a size limit and then stored on disk. This works well for large files without consuming all the memory [5].\n- You can get metadata from the uploaded file [5].\n- It has a file-like `async` interface [5].\n- It exposes a real `SpooledTemporaryFile` that you can pass to other libraries expecting a file-like object [5].\n\n**Reading the file:**\n- In an `async` path operation function, use `contents = await myfile.read()` [4].\n- In a normal `def` function, use `contents = myfile.file.read()` [4].\n\n**Variations:**\n- **Optional file:** use a default of `None`, e.g. `file: UploadFile | None = None` [1].\n- **Multiple files:** declare a list, e.g. `files: list[UploadFile]` or `Annotated[list[bytes], File()]` [2].\n- **Extra metadata:** use `File()` with `UploadFile`, e.g. `Annotated[UploadFile, File(description=\"A file read as UploadFile\")]` [3].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "Every claim, code sample, and citation traces to the context passages, and the answer directly shows how to upload a file and covers common variations."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 5.387,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-files/",
+          "heading": "Optional File Upload"
+        },
+        {
+          "n": 2,
+          "score": 4.067,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-files/",
+          "heading": "Multiple File Uploads"
+        },
+        {
+          "n": 3,
+          "score": 3.944,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-files/",
+          "heading": "`UploadFile` with Additional Metadata"
+        },
+        {
+          "n": 4,
+          "score": 3.791,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-files/",
+          "heading": "`UploadFile`"
+        },
+        {
+          "n": 5,
+          "score": 3.596,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-files/",
+          "heading": "File Parameters with `UploadFile`"
+        }
+      ]
+    },
+    {
+      "q": "How do I read form fields instead of JSON?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/request-forms/",
+      "rank": 1,
+      "refused": false,
+      "answer": "Use `Form` to receive form fields instead of JSON [3].\n\n1. **Install `python-multipart`** first, since it's required to use forms [3]:\n   ```console\n   $ uv add python-multipart\n   ```\n\n2. **Declare the parameters with `Form`**, the same way you would for `Body` or `Query` [4]:\n   ```python\n   from typing import Annotated\n\n   from fastapi import FastAPI, Form\n\n   app = FastAPI()\n\n\n   @app.post(\"/login/\")\n   async def login(username: Annotated[str, Form()], password: Annotated[str, Form()]):\n       return {\"username\": username}\n   ```\n\nNotes:\n- You need to use `Form` explicitly. Without it, the parameters would be interpreted as query parameters or body (JSON) parameters [4].\n- `Form` inherits directly from `Body`, so you can use the same configurations, including validation, examples, and aliases [4].\n- FastAPI reads the data from the right place instead of JSON [1].\n- You can't declare `Body` fields that you expect as JSON in the same *path operation*, because the request body will be encoded as `application/x-www-form-urlencoded` instead of `application/json`. This is part of the HTTP protocol, not a FastAPI limitation [1].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "Every claim, including the install step, the `Form` code example, the explicit-`Form` tip, the `Body` inheritance and the JSON-body warning, is directly supported by passages [1], [3] and [4], and the answer directly addresses the question."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 7.821,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-forms/",
+          "heading": "About \"Form Fields\""
+        },
+        {
+          "n": 2,
+          "score": 7.253,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-files/",
+          "heading": "What is \"Form Data\""
+        },
+        {
+          "n": 3,
+          "score": 6.006,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-forms/",
+          "heading": "Form Data"
+        },
+        {
+          "n": 4,
+          "score": 2.122,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-forms/",
+          "heading": "Define `Form` parameters"
+        },
+        {
+          "n": 5,
+          "score": 1.405,
+          "url": "https://fastapi.tiangolo.com/tutorial/stream-json-lines/",
+          "heading": "JSON Lines"
+        }
+      ]
+    },
+    {
+      "q": "How do I read a cookie from the request?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/cookie-params/",
+      "rank": 3,
+      "refused": false,
+      "answer": "Import `Cookie` from `fastapi` and declare the cookie as a parameter of your path operation function using `Annotated` with `Cookie()` [5][3]:\n\n```python\nfrom typing import Annotated\n\nfrom fastapi import Cookie, FastAPI\n\napp = FastAPI()\n\n\n@app.get(\"/items/\")\nasync def read_items(ads_id: Annotated[str | None, Cookie()] = None):\n    return {\"ads_id\": ads_id}\n```\n\nKey points:\n- `Cookie` is declared with the same structure as `Path` and `Query`, so you can set a default value and add extra validation or annotation parameters [3].\n- You must use `Cookie`, because otherwise the parameter would be interpreted as a query parameter [3].\n- If you need several cookies, you can declare them in a Pydantic model and use `Annotated[Cookies, Cookie()]`. FastAPI extracts each field from the request's cookies and gives you the model [1].\n- Browsers don't easily let JavaScript touch cookies, so the `/docs` UI won't send cookie values when you click \"Execute\", and you'll see an error as if no values were provided [3].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "Every claim in the answer, including the code, the Path/Query comparison, the Pydantic model option and the /docs UI caveat, matches the passages and is cited correctly, and it directly answers how to read a cookie using Cookie()."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 2.019,
+          "url": "https://fastapi.tiangolo.com/tutorial/cookie-param-models/",
+          "heading": "Cookies with a Pydantic Model"
+        },
+        {
+          "n": 2,
+          "score": 1.965,
+          "url": "https://fastapi.tiangolo.com/reference/parameters/",
+          "heading": "Request Parameters"
+        },
+        {
+          "n": 3,
+          "score": 1.513,
+          "url": "https://fastapi.tiangolo.com/tutorial/cookie-params/",
+          "heading": "Declare `Cookie` parameters"
+        },
+        {
+          "n": 4,
+          "score": 1.323,
+          "url": "https://fastapi.tiangolo.com/advanced/using-request-directly/",
+          "heading": "Using the Request Directly"
+        },
+        {
+          "n": 5,
+          "score": -1.014,
+          "url": "https://fastapi.tiangolo.com/tutorial/cookie-params/",
+          "heading": "Import `Cookie`"
+        }
+      ]
+    },
+    {
+      "q": "How do I read custom request headers?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/header-params/",
+      "rank": null,
+      "refused": true,
+      "answer": "I don't have enough information in the docs to answer that.",
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 4.819,
+          "url": "https://fastapi.tiangolo.com/advanced/response-headers/",
+          "heading": "Custom Headers"
+        },
+        {
+          "n": 2,
+          "score": 4.62,
+          "url": "https://fastapi.tiangolo.com/tutorial/handling-errors/",
+          "heading": "Add custom headers"
+        },
+        {
+          "n": 3,
+          "score": 3.215,
+          "url": "https://fastapi.tiangolo.com/how-to/custom-request-and-route/",
+          "heading": "Create a custom `GzipRequest` class"
+        },
+        {
+          "n": 4,
+          "score": 2.465,
+          "url": "https://fastapi.tiangolo.com/how-to/custom-request-and-route/",
+          "heading": "Accessing the request body in an exception handler"
+        },
+        {
+          "n": 5,
+          "score": 2.138,
+          "url": "https://fastapi.tiangolo.com/how-to/custom-request-and-route/",
+          "heading": "Use cases"
+        }
+      ]
+    },
+    {
+      "q": "How do I return a custom HTTP error with a status code?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/handling-errors/",
+      "rank": 2,
+      "refused": false,
+      "answer": "Raise an `HTTPException` with the `status_code` and `detail` you want. The docs show this example [2]:\n\n```python\nfrom fastapi import FastAPI, HTTPException\n\napp = FastAPI()\n\nitems = {\"foo\": \"The Foo Wrestlers\"}\n\n\n@app.get(\"/items-header/{item_id}\")\nasync def read_item_header(item_id: str):\n    if item_id not in items:\n        raise HTTPException(\n            status_code=404,\n            detail=\"Item not found\",\n            headers={\"X-Error\": \"There goes my error\"},\n        )\n    return {\"item\": items[item_id]}\n```\n\n- The `headers` argument is optional. It adds custom headers to the HTTP error, which can be useful for some types of security [2].\n- For which code to use, 404 means \"Not Found\", and 400 can be used for generic client errors [5].",
+      "judge": {
+        "faithfulness": 4,
+        "relevance": 5,
+        "reason": "The answer correctly uses HTTPException with status_code and detail, and its code example and claims about headers and status codes (404, 400) match passages [2] and [5]; the only gap is that the passages never explicitly say HTTPException is raised with detail for this purpose, though the example shows it."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 6.285,
+          "url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+          "heading": "`RedirectResponse`"
+        },
+        {
+          "n": 2,
+          "score": 6.093,
+          "url": "https://fastapi.tiangolo.com/tutorial/handling-errors/",
+          "heading": "Add custom headers"
+        },
+        {
+          "n": 3,
+          "score": 5.794,
+          "url": "https://fastapi.tiangolo.com/advanced/response-change-status-code/",
+          "heading": "Use case"
+        },
+        {
+          "n": 4,
+          "score": 5.263,
+          "url": "https://fastapi.tiangolo.com/advanced/additional-status-codes/",
+          "heading": "Additional status codes"
+        },
+        {
+          "n": 5,
+          "score": 5.029,
+          "url": "https://fastapi.tiangolo.com/tutorial/response-status-code/",
+          "heading": "About HTTP status codes"
+        }
+      ]
+    },
+    {
+      "q": "How do I filter fields in the response, like hiding a password?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/response-model/",
+      "rank": 1,
+      "refused": false,
+      "answer": "Use a return type annotation (or `response_model`) that declares only the fields you want in the response. FastAPI filters the returned data using that model, so the response includes only the declared fields, even if the function returns more [1].\n\nThe recommended approach is to use inheritance. Put the shared fields in a base class, and add the sensitive field in a subclass:\n\n```python\nfrom fastapi import FastAPI\nfrom pydantic import BaseModel, EmailStr\n\napp = FastAPI()\n\n\nclass BaseUser(BaseModel):\n    username: str\n    email: EmailStr\n    full_name: str | None = None\n\n\nclass UserIn(BaseUser):\n    password: str\n\n\n@app.post(\"/user/\")\nasync def create_user(user: UserIn) -> BaseUser:\n    return user\n```\n\n[1]\n\nHere the function receives a `UserIn` (with `password`) but is annotated to return `BaseUser`, so the `password` field is filtered out of the response [1]. Editors and mypy don't complain, because `UserIn` is a subclass of `BaseUser` and is therefore a valid type where a `BaseUser` is expected [2].\n\nIf the classes are unrelated, you have to use the `response_model` parameter instead, but then you lose editor and tool support for checking the function's return type [1].\n\nThe docs also point to this page as the reference for making sure you don't return more data than you should [5].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "The answer closely follows passages [1], [2], and [5], with accurate claims about return type filtering, inheritance, and the response_model alternative, and it directly answers how to hide a password field."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 2.266,
+          "url": "https://fastapi.tiangolo.com/tutorial/response-model/",
+          "heading": "Return Type and Data Filtering"
+        },
+        {
+          "n": 2,
+          "score": -0.96,
+          "url": "https://fastapi.tiangolo.com/tutorial/response-model/",
+          "heading": "Type Annotations and Tooling"
+        },
+        {
+          "n": 3,
+          "score": -3.087,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-param-models/",
+          "heading": "Forbid Extra Query Parameters"
+        },
+        {
+          "n": 4,
+          "score": -3.481,
+          "url": "https://fastapi.tiangolo.com/tutorial/request-form-models/",
+          "heading": "Forbid Extra Form Fields"
+        },
+        {
+          "n": 5,
+          "score": -3.589,
+          "url": "https://fastapi.tiangolo.com/how-to/general/",
+          "heading": "Filter Data - Security"
+        }
+      ]
+    },
+    {
+      "q": "How do I set the HTTP status code for a path operation?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/response-status-code/",
+      "rank": 2,
+      "refused": false,
+      "answer": "Pass the `status_code` parameter to the path operation decorator (`@app.get()`, `@app.post()`, `@app.put()`, `@app.delete()`, etc.) [2]. It is a parameter of the decorator method, not of your path operation function [2].\n\n```python\nfrom fastapi import FastAPI\n\napp = FastAPI()\n\n\n@app.post(\"/items/\", status_code=201)\nasync def create_item(name: str):\n    return {\"name\": name}\n```\n[2]\n\nOptions for the value:\n- An `int` code, like `404` [1].\n- A shortcut constant from `status`, such as `status.HTTP_201_CREATED`, if you don't remember the numeric codes [1].\n- An `IntEnum`, such as Python's `http.HTTPStatus` [2].\n\n```python\nfrom fastapi import FastAPI, status\n\n@app.post(\"/items/\", status_code=status.HTTP_201_CREATED)\nasync def create_item(item: Item) -> Item:\n    return item\n```\n[1]\n\nThe status code is returned in the response and documented in the OpenAPI schema [1][2]. You can also import `status` from `starlette`, since `fastapi.status` is the same thing provided for convenience [1].\n\nIf you need to return an additional status code besides the main one, you can return a `Response` directly, such as a `JSONResponse`, with the desired `status_code` set [3].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "Every claim, including the decorator parameter, the int/status constant/IntEnum options, the OpenAPI documentation and the Response-based additional status codes, is supported by passages [1]-[3], and the answer directly addresses the question."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 7.474,
+          "url": "https://fastapi.tiangolo.com/tutorial/path-operation-configuration/",
+          "heading": "Response Status Code"
+        },
+        {
+          "n": 2,
+          "score": 6.559,
+          "url": "https://fastapi.tiangolo.com/tutorial/response-status-code/",
+          "heading": "Response Status Code"
+        },
+        {
+          "n": 3,
+          "score": 6.412,
+          "url": "https://fastapi.tiangolo.com/advanced/additional-status-codes/",
+          "heading": "Additional status codes"
+        },
+        {
+          "n": 4,
+          "score": 5.199,
+          "url": "https://fastapi.tiangolo.com/advanced/additional-status-codes/",
+          "heading": "Additional Status Codes"
+        },
+        {
+          "n": 5,
+          "score": 4.609,
+          "url": "https://fastapi.tiangolo.com/tutorial/first-steps/",
+          "heading": "Step 3: create a *path operation*"
+        }
+      ]
+    },
+    {
+      "q": "How do I add a middleware that runs for every request?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/middleware/",
+      "rank": 1,
+      "refused": false,
+      "answer": "Use the `@app.middleware(\"http\")` decorator on top of a function [4]. The middleware function receives the `request` and a `call_next` function. `call_next` passes the request to the matching *path operation* and returns the response it generates, which you can modify before returning it [4].\n\n```python\nimport time\n\nfrom fastapi import FastAPI, Request\n\napp = FastAPI()\n\n\n@app.middleware(\"http\")\nasync def add_process_time_header(request: Request, call_next):\n    start_time = time.perf_counter()\n    response = await call_next(request)\n    process_time = time.perf_counter() - start_time\n    response.headers[\"X-Process-Time\"] = str(process_time)\n    return response\n```\n\nA middleware like this works with every request before any specific *path operation* processes it, and with every response before it is returned [1].\n\nYou can also add middleware with `app.add_middleware()`, for example `app.add_middleware(HTTPSRedirectMiddleware)` [5]. When you add several middlewares, the last one added is the outermost and runs first on the request path [2].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "Every claim is supported by the cited passages ([4], [1], [5], [2]), and the answer directly shows how to add a middleware with both the decorator and `app.add_middleware()`."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 8.454,
+          "url": "https://fastapi.tiangolo.com/tutorial/middleware/",
+          "heading": "Middleware"
+        },
+        {
+          "n": 2,
+          "score": 7.112,
+          "url": "https://fastapi.tiangolo.com/tutorial/middleware/",
+          "heading": "Multiple middleware execution order"
+        },
+        {
+          "n": 3,
+          "score": 6.316,
+          "url": "https://fastapi.tiangolo.com/tutorial/middleware/",
+          "heading": "Before and after the `response`"
+        },
+        {
+          "n": 4,
+          "score": 5.368,
+          "url": "https://fastapi.tiangolo.com/tutorial/middleware/",
+          "heading": "Create a middleware"
+        },
+        {
+          "n": 5,
+          "score": 3.864,
+          "url": "https://fastapi.tiangolo.com/advanced/middleware/",
+          "heading": "`HTTPSRedirectMiddleware`"
+        }
+      ]
+    },
+    {
+      "q": "How do I test my app with a test client?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/testing/",
+      "rank": 1,
+      "refused": false,
+      "answer": "To test your app with a test client, use `TestClient`:\n\n1. **Install `httpx`**, which `TestClient` requires: `uv add httpx` [5].\n2. **Import `TestClient`** from `fastapi.testclient` [2][5]. It lets you test FastAPI applications without a real HTTP or socket connection, communicating directly with the FastAPI code [2].\n3. **Create a `TestClient`** by passing your FastAPI app to it [5].\n4. **Write test functions** whose names start with `test_`, which is a standard `pytest` convention [5].\n5. **Use the client like `httpx`**, and check results with plain `assert` statements [5].\n\n```python\nfrom fastapi import FastAPI\nfrom fastapi.testclient import TestClient\n\napp = FastAPI()\n\n\n@app.get(\"/\")\nasync def read_main():\n    return {\"msg\": \"Hello World\"}\n\n\nclient = TestClient(app)\n\n\ndef test_read_main():\n    response = client.get(\"/\")\n    assert response.status_code == 200\n    assert response.json() == {\"msg\": \"Hello World\"}\n```\n[5]\n\nNotes:\n- The test functions are normal `def`, not `async def`, and the client calls don't use `await`, so you can use `pytest` directly [5].\n- You can put tests in a file like `test_main.py` in the same package as your app, and import the app with a relative import, e.g. `from .main import app` [1].\n- To send headers or JSON, pass `headers=` or `json=` to the client calls [3]. If you're unsure how to pass something in a request, you can look up how to do it in `httpx` or `requests`, since HTTPX's design is based on Requests' [3].\n- You can also import it from `starlette.testclient`, which is the same thing that FastAPI provides as a convenience [5].",
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 5.929,
+          "url": "https://fastapi.tiangolo.com/tutorial/testing/",
+          "heading": "Testing file"
+        },
+        {
+          "n": 2,
+          "score": 5.784,
+          "url": "https://fastapi.tiangolo.com/reference/testclient/",
+          "heading": "Test Client - `TestClient`"
+        },
+        {
+          "n": 3,
+          "score": 4.947,
+          "url": "https://fastapi.tiangolo.com/tutorial/testing/",
+          "heading": "Extended testing file"
+        },
+        {
+          "n": 4,
+          "score": 4.744,
+          "url": "https://fastapi.tiangolo.com/advanced/settings/",
+          "heading": "Settings and testing"
+        },
+        {
+          "n": 5,
+          "score": 4.31,
+          "url": "https://fastapi.tiangolo.com/tutorial/testing/",
+          "heading": "Using `TestClient`"
+        }
+      ]
+    },
+    {
+      "q": "How do I serve static files?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/static-files/",
+      "rank": 1,
+      "refused": false,
+      "answer": "Use the `StaticFiles` class to serve static files such as JavaScript, CSS, and images from a directory [1][2]. Import it from `fastapi.staticfiles`:\n\n```python\nfrom fastapi.staticfiles import StaticFiles\n```\n[2]\n\nIf you're hosting a frontend, such as a built React, Vue, or Astro app, use `app.frontend()` (or `router.frontend()`) instead [1][4]. It uses `StaticFiles` underneath and adds features like client-side routing [1]. FastAPI checks normal path operations first and only looks at the frontend files if no route matched, so your API isn't affected [4].\n\nThe passages don't show how to attach `StaticFiles` to your app, so I can't give those steps from the docs provided.",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 3,
+        "reason": "Every claim is supported by the passages and the answer honestly notes the missing mounting steps, but it never shows how to actually serve static files (e.g., app.mount), so it only partially answers the how-to question."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 8.35,
+          "url": "https://fastapi.tiangolo.com/tutorial/static-files/",
+          "heading": "Static Files"
+        },
+        {
+          "n": 2,
+          "score": 7.046,
+          "url": "https://fastapi.tiangolo.com/reference/staticfiles/",
+          "heading": "Static Files - `StaticFiles`"
+        },
+        {
+          "n": 3,
+          "score": 5.461,
+          "url": "https://fastapi.tiangolo.com/how-to/custom-docs-ui-assets/",
+          "heading": "Custom Docs UI Static Assets (Self-Hosting)"
+        },
+        {
+          "n": 4,
+          "score": 5.445,
+          "url": "https://fastapi.tiangolo.com/tutorial/frontend/",
+          "heading": "Frontend"
+        },
+        {
+          "n": 5,
+          "score": 4.917,
+          "url": "https://fastapi.tiangolo.com/how-to/custom-docs-ui-assets/",
+          "heading": "Test the static files"
+        }
+      ]
+    },
+    {
+      "q": "How do I share logic between endpoints with dependency injection?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/dependencies/",
+      "rank": 1,
+      "refused": false,
+      "answer": "Dependency injection lets your path operation functions declare what they need, and FastAPI provides it, so shared logic lives in one place. Shared logic is one of the use cases the docs list [1].\n\n- **Declare a dependency:** You tell FastAPI that your path operation function \"depends\" on something else. FastAPI executes it before your function and injects the result [3].\n- **Reuse across endpoints:** The same dependency can serve many endpoints, which minimizes code repetition [1]. Typical uses include shared database connections and enforcing security, authentication, or role requirements [1].\n- **Layer dependencies:** Dependencies can have their own sub-dependencies, forming a hierarchical tree that FastAPI resolves for you [2]. For example, one `current_user` dependency can feed an `active_user` dependency, which in turn feeds `admin_user` and `paying_user`. Each endpoint then gets different permission requirements by using the appropriate one [2].\n- **Writing them:** Dependencies are just functions that look the same as path operation functions [4].\n\nThe provided passages don't include a code example or the exact syntax for declaring a dependency, so I can't show that here.",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 4,
+        "reason": "Every claim is supported by the passages with accurate citations and the answer honestly notes the missing code example, but it lacks concrete syntax (e.g., Depends), which limits how fully it answers a how-to question."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 3.041,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/",
+          "heading": "What is \"Dependency Injection\""
+        },
+        {
+          "n": 2,
+          "score": 1.124,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/",
+          "heading": "Simple and Powerful"
+        },
+        {
+          "n": 3,
+          "score": -0.935,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/",
+          "heading": "Simple usage"
+        },
+        {
+          "n": 4,
+          "score": -2.451,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies/",
+          "heading": "Recap"
+        },
+        {
+          "n": 5,
+          "score": -3.391,
+          "url": "https://fastapi.tiangolo.com/features/",
+          "heading": "Dependency Injection"
+        }
+      ]
+    },
+    {
+      "q": "How do I run code at application startup and shutdown?",
+      "expected_url": "https://fastapi.tiangolo.com/advanced/events/",
+      "rank": 1,
+      "refused": false,
+      "answer": "**Recommended: the `lifespan` parameter.** The recommended way to handle startup and shutdown is the `lifespan` parameter of the `FastAPI` app [1]. Startup code runs once, before the app starts receiving requests. Shutdown code runs once, after the app has handled possibly many requests [5]. This is useful for setting up shared resources, such as a database connection pool or a machine learning model, and cleaning them up afterwards [5].\n\nThe passages don't include a `lifespan` code example, so I can't show its syntax.\n\n**Alternative (deprecated): event handlers.** You can define functions to run at startup and at shutdown. They can be `async def` or normal `def` [1]. For shutdown, declare the function with the `\"shutdown\"` event:\n\n```python\nfrom fastapi import FastAPI\n\napp = FastAPI()\n\n\n@app.on_event(\"shutdown\")\ndef shutdown_event():\n    with open(\"log.txt\", mode=\"a\") as log:\n        log.write(\"Application shutdown\")\n```\n[2]\n\nThe passages don't show a startup handler example.\n\n**Caveat:** If you provide a `lifespan` parameter, the `startup` and `shutdown` event handlers will no longer be called. It's all `lifespan` or all events, not both [1].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 3,
+        "reason": "Every claim is supported by the passages and the answer honestly notes the missing lifespan and startup examples, but it gives no working code for the recommended lifespan approach, only a shutdown example from the deprecated method."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 3.929,
+          "url": "https://fastapi.tiangolo.com/advanced/events/",
+          "heading": "Alternative Events (deprecated)"
+        },
+        {
+          "n": 2,
+          "score": 2.908,
+          "url": "https://fastapi.tiangolo.com/advanced/events/",
+          "heading": "`shutdown` event"
+        },
+        {
+          "n": 3,
+          "score": 1.458,
+          "url": "https://fastapi.tiangolo.com/tutorial/first-steps/",
+          "heading": "First Steps"
+        },
+        {
+          "n": 4,
+          "score": 0.037,
+          "url": "https://fastapi.tiangolo.com/deployment/docker/",
+          "heading": "Running on Startup and Restarts"
+        },
+        {
+          "n": 5,
+          "score": -0.144,
+          "url": "https://fastapi.tiangolo.com/advanced/events/",
+          "heading": "Lifespan Events"
+        }
+      ]
+    },
+    {
+      "q": "How do I add WebSocket support?",
+      "expected_url": "https://fastapi.tiangolo.com/advanced/websockets/",
+      "rank": 1,
+      "refused": false,
+      "answer": "To add WebSocket support:\n\n1. **Install `websockets`**, a Python library that makes it easy to use the WebSocket protocol [1]:\n\n```console\n$ uv add websockets\n```\n\n2. **Create a `websocket` endpoint** in your FastAPI application [2]:\n\n```python\nfrom fastapi import FastAPI, WebSocket\n\napp = FastAPI()\n\n@app.websocket(\"/ws\")\nasync def websocket_endpoint(websocket: WebSocket):\n    await websocket.accept()\n    while True:\n        data = await websocket.receive_text()\n        await websocket.send_text(f\"Message text was: {data}\")\n```\n\nThis endpoint code comes from the full example in the docs [2]. You can also import `WebSocket` from `starlette.websockets`. FastAPI provides it directly as a convenience, but it comes from Starlette [2].\n\n3. **Try it** by putting your code in `main.py` and running `uv run fastapi dev` [4]. All messages you send and receive will use the same WebSocket connection [4].\n\nThe docs' example also includes a simple HTML page with JavaScript as a client, but this isn't meant for production. In production you would typically use a frontend framework such as React, Vue.js or Angular, or a native mobile app [5].\n\nNote that for WebSockets it doesn't make sense to raise an `HTTPException`. Raise a `WebSocketException` instead [3].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "Every claim traces to the passages (install via uv add, the endpoint code from [2], the Starlette import note, running with uv run fastapi dev, the production note, and WebSocketException instead of HTTPException from [3]), and the answer gives a clear step-by-step guide to adding WebSocket support."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 5.074,
+          "url": "https://fastapi.tiangolo.com/advanced/websockets/",
+          "heading": "Install `websockets`"
+        },
+        {
+          "n": 2,
+          "score": 3.228,
+          "url": "https://fastapi.tiangolo.com/advanced/websockets/",
+          "heading": "Create a `websocket`"
+        },
+        {
+          "n": 3,
+          "score": 2.974,
+          "url": "https://fastapi.tiangolo.com/advanced/websockets/",
+          "heading": "Using `Depends` and others"
+        },
+        {
+          "n": 4,
+          "score": 2.599,
+          "url": "https://fastapi.tiangolo.com/advanced/websockets/",
+          "heading": "Try it"
+        },
+        {
+          "n": 5,
+          "score": 2.462,
+          "url": "https://fastapi.tiangolo.com/advanced/websockets/",
+          "heading": "In production"
+        }
+      ]
+    },
+    {
+      "q": "How do I run my app in a Docker container?",
+      "expected_url": "https://fastapi.tiangolo.com/deployment/docker/",
+      "rank": 1,
+      "refused": false,
+      "answer": "The passages cover building the image and the Dockerfile that starts the app, but not the command that starts the container.\n\n1. **Write a Dockerfile.** This example from the docs ends with a `CMD` that starts the app. It uses 4 workers for the special multi-process case, so drop `--workers` for a single process [5]:\n\n   ```dockerfile\n   FROM python:3.14\n\n   WORKDIR /code\n\n   COPY ./requirements.txt /code/requirements.txt\n\n   RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt\n\n   COPY ./app /code/app\n\n   CMD [\"fastapi\", \"run\", \"app/main.py\", \"--port\", \"80\", \"--workers\", \"4\"]\n   ```\n\n2. **Build the image.** Go to the project directory, which contains your `Dockerfile` and `app` directory, and run [3]:\n\n   ```console\n   $ docker build -t myimage .\n   ```\n\n   The `.` at the end tells Docker which directory to use for the build [3].\n\n3. **Enable restarts (optional).** Whatever starts your container (Docker, Docker Compose, Kubernetes, a cloud service) usually has an option to run it on startup and restart it on failure. In Docker, this is the `--restart` command line option [4].\n\nThe passages don't show the command for starting the built image as a container, so I can't say more about that step.",
+      "judge": {
+        "faithfulness": 4,
+        "relevance": 4,
+        "reason": "Claims are largely supported by the passages and the answer honestly notes the missing docker run step, though the Dockerfile is only partly grounded (the 'drop --workers' advice is inference, and the full file is spliced from a multi-process example), and it does not fully answer how to run the container."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 5.693,
+          "url": "https://fastapi.tiangolo.com/deployment/docker/",
+          "heading": "Single Container"
+        },
+        {
+          "n": 2,
+          "score": 5.454,
+          "url": "https://fastapi.tiangolo.com/deployment/docker/",
+          "heading": "One Load Balancer - Multiple Worker Containers"
+        },
+        {
+          "n": 3,
+          "score": 4.787,
+          "url": "https://fastapi.tiangolo.com/deployment/docker/",
+          "heading": "Build the Docker Image"
+        },
+        {
+          "n": 4,
+          "score": 4.553,
+          "url": "https://fastapi.tiangolo.com/deployment/docker/",
+          "heading": "Running on Startup and Restarts"
+        },
+        {
+          "n": 5,
+          "score": 4.292,
+          "url": "https://fastapi.tiangolo.com/deployment/docker/",
+          "heading": "Containers with Multiple Processes and Special Cases"
+        }
+      ]
+    },
+    {
+      "q": "How do I structure a larger application with multiple files?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/",
+      "rank": 1,
+      "refused": false,
+      "answer": "Split your app into a Python package with submodules, and use `APIRouter` to group related *path operations* in their own files. FastAPI provides this as a convenience tool for structuring an application, and it is the equivalent of Flask's Blueprints [1].\n\n**Example file structure** [5]:\n\n```\n.\n├── app\n│   ├── __init__.py\n│   ├── main.py\n│   ├── dependencies.py\n│   └── routers\n│   │   ├── __init__.py\n│   │   ├── items.py\n│   │   └── users.py\n│   └── internal\n│       ├── __init__.py\n│       └── admin.py\n```\n\n- Each directory or subdirectory has an `__init__.py` file, which is what allows importing code from one file into another. For example, `app/main.py` could have `from app.routers import items` [5].\n- `app` is a Python package, and `app/main.py` and `app/dependencies.py` are modules of it (`app.main`, `app.dependencies`) [5].\n- `app/routers/` and `app/internal/` are subpackages. Files such as `app/routers/items.py` and `app/routers/users.py` are submodules (`app.routers.items`, `app.routers.users`) [5].\n\n**Using `APIRouter`:** If `/app/routers/users.py` handles only users, you can create its *path operations* with `APIRouter`. This keeps them separate from the rest of the code while they remain part of the same FastAPI application [4].\n\n**Dependencies for a group:** You can declare a single `dependencies` parameter for a group of *path operations* in a multi-file application [2][3]. The passages don't show how to do this.",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 4,
+        "reason": "All claims are supported by the passages (Flask Blueprints equivalence, file structure, __init__.py, APIRouter, group dependencies, with an honest note that the how-to isn't shown), but the answer lacks concrete code for creating routers and including them in main.py, since the context didn't provide it."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 6.906,
+          "url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/",
+          "heading": "Bigger Applications - Multiple Files"
+        },
+        {
+          "n": 2,
+          "score": 5.414,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/global-dependencies/",
+          "heading": "Dependencies for groups of *path operations*"
+        },
+        {
+          "n": 3,
+          "score": 5.275,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-in-path-operation-decorators/",
+          "heading": "Dependencies for a group of *path operations*"
+        },
+        {
+          "n": 4,
+          "score": 5.111,
+          "url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/",
+          "heading": "`APIRouter`"
+        },
+        {
+          "n": 5,
+          "score": 5.001,
+          "url": "https://fastapi.tiangolo.com/tutorial/bigger-applications/",
+          "heading": "An example file structure"
+        }
+      ]
+    },
+    {
+      "q": "How do I connect to a SQL database?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/sql-databases/",
+      "rank": 1,
+      "refused": false,
+      "answer": "You connect to a SQL database by creating a single SQLModel `engine`, which holds the connections to the database. Use one `engine` object for all your code that connects to the same database [1].\n\nFor SQLite, the example builds a URL and creates the engine like this [1]:\n\n```python\nsqlite_file_name = \"database.db\"\nsqlite_url = f\"sqlite:///{sqlite_file_name}\"\n\nconnect_args = {\"check_same_thread\": False}\nengine = create_engine(sqlite_url, connect_args=connect_args)\n```\n\n`check_same_thread=False` lets FastAPI use the same SQLite database in different threads. This is needed because a single request could use more than one thread, for example in dependencies [1].\n\nTo use the engine in your path operations, create a session dependency [1]:\n\n```python\ndef get_session():\n    with Session(engine) as session:\n        yield session\n\n\nSessionDep = Annotated[Session, Depends(get_session)]\n```\n\nYou can then declare `session: SessionDep` in your path operation functions [1].\n\nThe tables are created on startup with `SQLModel.metadata.create_all(engine)` [2]. For production, you would probably use a migration script that runs before the app starts [2].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "Every claim, including the engine creation, check_same_thread explanation, session dependency, startup table creation and migration note, is directly supported by passages [1] and [2], and it answers the connection question with a practical example."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 2.558,
+          "url": "https://fastapi.tiangolo.com/tutorial/sql-databases/",
+          "heading": "Create an Engine"
+        },
+        {
+          "n": 2,
+          "score": -0.292,
+          "url": "https://fastapi.tiangolo.com/tutorial/sql-databases/",
+          "heading": "Create Database Tables on Startup"
+        },
+        {
+          "n": 3,
+          "score": -0.37,
+          "url": "https://fastapi.tiangolo.com/tutorial/sql-databases/",
+          "heading": "Recap"
+        },
+        {
+          "n": 4,
+          "score": -0.815,
+          "url": "https://fastapi.tiangolo.com/tutorial/sql-databases/",
+          "heading": "Create Models"
+        },
+        {
+          "n": 5,
+          "score": -1.571,
+          "url": "https://fastapi.tiangolo.com/tutorial/sql-databases/",
+          "heading": "Read One Hero"
+        }
+      ]
+    },
+    {
+      "q": "When should I use async def versus a normal def?",
+      "expected_url": "https://fastapi.tiangolo.com/async/",
+      "rank": 2,
+      "refused": false,
+      "answer": "Use `async def` when:\n\n- A third-party library tells you to call it with `await`. You can only use `await` inside functions created with `async def` [4]. The example is `results = await some_library()` inside an `async def` path operation function [4].\n- Your application doesn't have to communicate with anything else and wait for a response. Use `async def` even if you don't need `await` inside [4].\n- You define trivial compute-only path operation functions. In FastAPI, plain `def` for these has the opposite of the expected effect, so `async def` is better unless the code performs blocking I/O [2].\n\nUse normal `def` when:\n\n- You use a third-party library that communicates with something (a database, an API, the file system, etc.) and doesn't support `await`. This is currently the case for most database libraries [4].\n- You just don't know which to use [4].\n\nA path operation function declared with normal `def` is run in an external threadpool that is awaited, rather than being called directly, so it doesn't block the server [2].\n\nOther points:\n\n- You can mix `def` and `async def` in path operation functions as needed, and FastAPI will do the right thing [4].\n- The same rules apply to dependencies. You can use either `async def` or `def`, and FastAPI will know what to do [1].\n- For utility functions that you call yourself, FastAPI doesn't affect how you call them. A `def` function is called directly, not in a threadpool, and an `async def` function must be awaited [3].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "Every claim is backed by the passages and cited correctly, and the answer directly addresses when to use async def versus def, with added context on dependencies and utility functions."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 5.002,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/",
+          "heading": "To `async` or not to `async`"
+        },
+        {
+          "n": 2,
+          "score": 4.875,
+          "url": "https://fastapi.tiangolo.com/async/",
+          "heading": "Path operation functions"
+        },
+        {
+          "n": 3,
+          "score": 3.923,
+          "url": "https://fastapi.tiangolo.com/async/",
+          "heading": "Other utility functions"
+        },
+        {
+          "n": 4,
+          "score": 3.419,
+          "url": "https://fastapi.tiangolo.com/async/",
+          "heading": "In a hurry?"
+        },
+        {
+          "n": 5,
+          "score": 2.454,
+          "url": "https://fastapi.tiangolo.com/async/",
+          "heading": "`async` and `await`"
+        }
+      ]
+    },
+    {
+      "q": "How do I add tags and a description to the OpenAPI docs?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/metadata/",
+      "rank": 1,
+      "refused": false,
+      "answer": "**Tags with descriptions**\n\nPass a list of dictionaries, one per tag, to the `openapi_tags` parameter. Each dictionary has a required `name` that matches the tag used in your path operations and `APIRouter`s. It can also have a `description` (Markdown is allowed and shown in the docs UI) and `externalDocs` [2]. Then use the same tag names in your path operations [1]:\n\n```python\nfrom fastapi import FastAPI\n\ntags_metadata = [\n    {\n        \"name\": \"users\",\n        \"description\": \"Operations with users. The **login** logic is also here.\",\n    },\n    {\n        \"name\": \"items\",\n        \"description\": \"Manage items. So _fancy_ they have their own docs.\",\n        \"externalDocs\": {\n            \"description\": \"Items external docs\",\n            \"url\": \"https://fastapi.tiangolo.com/\",\n        },\n    },\n]\n\napp = FastAPI(openapi_tags=tags_metadata)\n\n\n@app.get(\"/users/\", tags=[\"users\"])\nasync def get_users():\n    return [{\"name\": \"Harry\"}, {\"name\": \"Ron\"}]\n```\n\nYou don't need to add metadata for every tag you use [1].\n\n**Other descriptions**\n\n- **API description:** The `description` field is a short description of the API, and it can use Markdown [5].\n- **Path operation tags, summary and description:** The docs I have only point to the \"Path Operation Configurations\" tutorial for these [3][4]. They don't include the details.",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "Every claim, including the code example, traces to passages [1]-[5], and the answer notes that the path-operation tags/summary/description details are not in the context; it directly covers tag metadata and the API description."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 6.431,
+          "url": "https://fastapi.tiangolo.com/tutorial/metadata/",
+          "heading": "Create metadata for tags"
+        },
+        {
+          "n": 2,
+          "score": 6.222,
+          "url": "https://fastapi.tiangolo.com/tutorial/metadata/",
+          "heading": "Metadata for tags"
+        },
+        {
+          "n": 3,
+          "score": 5.873,
+          "url": "https://fastapi.tiangolo.com/how-to/general/",
+          "heading": "Documentation Tags - OpenAPI"
+        },
+        {
+          "n": 4,
+          "score": 4.724,
+          "url": "https://fastapi.tiangolo.com/how-to/general/",
+          "heading": "Documentation Summary and Description - OpenAPI"
+        },
+        {
+          "n": 5,
+          "score": 2.25,
+          "url": "https://fastapi.tiangolo.com/tutorial/metadata/",
+          "heading": "Metadata for API"
+        }
+      ]
+    },
+    {
+      "q": "How do I implement OAuth2 password flow with JWT tokens?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/",
+      "rank": 1,
+      "refused": false,
+      "answer": "The passages cover only part of the implementation, so here is what they support.\n\n**1. Understand the flow**\n- The user's `username` and `password` are sent to a URL in your API, declared with `tokenUrl=\"token\"`. The API checks them and responds with a token [4].\n- The token is a string used later to verify the user. It normally expires after some time [4].\n- The frontend then authenticates by sending the header `Authorization: Bearer <token>` [4].\n\n**2. Set up the JWT handling**\n- Generate a random secret key with `openssl rand -hex 32` and copy it into `SECRET_KEY`. Don't reuse the example key [2].\n- Set `ALGORITHM = \"HS256\"` and define a variable for the token expiration (`ACCESS_TOKEN_EXPIRE_MINUTES = 30` in the example) [2].\n- Define a Pydantic `Token` model with `access_token: str` and `token_type: str` for the token endpoint's response [2].\n- Create a utility function to generate a new access token [2].\n\n**3. Set up password hashing and the security scheme**\n```python\npassword_hash = PasswordHash.recommended()\noauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"token\")\n```\n[2]\n\nVerify passwords with `password_hash.verify(plain_password, hashed_password)` [5]. Store password hashes in your database [1].\n\n**4. Update the `/token` path operation**\n- Create a `timedelta` with the token's expiration time [5].\n- Create a real JWT access token and return it [5].\n\nThe passages don't show the token-creation function body, the full `/token` endpoint, or the code that decodes the token and gets the current user. I can't give those parts from the docs provided",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 4,
+        "reason": "Every claim traces to the passages (flow steps [4], key/algorithm/model setup [2], verify and timedelta [5], hash storage [1]) and the answer honestly notes the missing function bodies, but it cannot give a complete implementation because the context omits those parts."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 6.727,
+          "url": "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/",
+          "heading": "OAuth2 with Password (and hashing), Bearer with JWT tokens"
+        },
+        {
+          "n": 2,
+          "score": 6.237,
+          "url": "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/",
+          "heading": "Handle JWT tokens"
+        },
+        {
+          "n": 3,
+          "score": 6.236,
+          "url": "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/",
+          "heading": "Advanced usage with `scopes`"
+        },
+        {
+          "n": 4,
+          "score": 6.135,
+          "url": "https://fastapi.tiangolo.com/tutorial/security/first-steps/",
+          "heading": "The `password` flow"
+        },
+        {
+          "n": 5,
+          "score": 5.875,
+          "url": "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/",
+          "heading": "Update the `/token` *path operation*"
+        }
+      ]
+    },
+    {
+      "q": "How do I return HTML instead of JSON?",
+      "expected_url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+      "rank": 1,
+      "refused": false,
+      "answer": "You can use the `HTMLResponse` class in two ways:\n\n**1. Per path operation:** Declare the response class in the path operation decorator with the `response_class` parameter [1]. The content your function returns is put inside that response class [1].\n\n**2. As the default for every path operation:** Set `default_response_class` when creating the `FastAPI` instance or an `APIRouter` [4]:\n\n```python\nfrom fastapi import FastAPI\nfrom fastapi.responses import HTMLResponse\n\napp = FastAPI(default_response_class=HTMLResponse)\n\n\n@app.get(\"/items/\")\nasync def read_items():\n    return \"<h1>Items</h1><p>This is a list of items.</p>\"\n```\n\nWith this, FastAPI uses `HTMLResponse` in all path operations instead of JSON [4]. You can still override `response_class` in individual path operations [4].\n\nThe passages don't show a decorator-level `response_class=HTMLResponse` example, only the `default_response_class` one above.",
+      "judge": {
+        "faithfulness": 4,
+        "relevance": 5,
+        "reason": "Claims are supported by passages [1] and [4] and the answer honestly notes there is no decorator-level HTMLResponse example, though saying 'use HTMLResponse in two ways' for the per-operation case slightly extends [1], which doesn't mention HTMLResponse there."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 5.885,
+          "url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+          "heading": "Custom Response - HTML, Stream, File, others"
+        },
+        {
+          "n": 2,
+          "score": 5.616,
+          "url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+          "heading": "Custom response class"
+        },
+        {
+          "n": 3,
+          "score": 4.719,
+          "url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+          "heading": "`JSONResponse`"
+        },
+        {
+          "n": 4,
+          "score": 4.599,
+          "url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+          "heading": "Default response class"
+        },
+        {
+          "n": 5,
+          "score": 4.152,
+          "url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+          "heading": "JSON Responses"
+        }
+      ]
+    },
+    {
+      "q": "How do I add validation to fields inside a request body model?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/body-fields/",
+      "rank": 1,
+      "refused": false,
+      "answer": "Use Pydantic's `Field` inside your Pydantic model. In the same way that `Query`, `Path` and `Body` let you declare extra validation and metadata on *path operation function* parameters, `Field` lets you declare validation and metadata inside Pydantic models [1]. You can use it to declare extra validations and metadata for model attributes, and `json_schema_extra` can pass additional JSON Schema metadata [2].\n\nFastAPI also validates the request body against your model automatically. If the data is invalid, it returns a clear error indicating exactly where and what the incorrect data was [4].\n\nThe passages don't include a code example of `Field` with specific validation constraints, so I can't show one.",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 4,
+        "reason": "Every claim is supported by passages [1], [2] and [4], and the answer honestly says no code example is available; it loses a point on relevance because it gives no concrete Field usage with constraints."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 4.965,
+          "url": "https://fastapi.tiangolo.com/tutorial/body-fields/",
+          "heading": "Body - Fields"
+        },
+        {
+          "n": 2,
+          "score": 3.701,
+          "url": "https://fastapi.tiangolo.com/tutorial/body-fields/",
+          "heading": "Recap"
+        },
+        {
+          "n": 3,
+          "score": 1.521,
+          "url": "https://fastapi.tiangolo.com/advanced/json-base64-bytes/",
+          "heading": "Pydantic `bytes`"
+        },
+        {
+          "n": 4,
+          "score": 1.351,
+          "url": "https://fastapi.tiangolo.com/tutorial/body/",
+          "heading": "Results"
+        },
+        {
+          "n": 5,
+          "score": 0.727,
+          "url": "https://fastapi.tiangolo.com/how-to/custom-request-and-route/",
+          "heading": "Accessing the request body in an exception handler"
+        }
+      ]
+    },
+    {
+      "q": "How do I use a dependency with yield to clean up resources?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/",
+      "rank": 1,
+      "refused": false,
+      "answer": "Use `yield` instead of `return` in the dependency, and put the cleanup code after the `yield` [1]. Use `yield` only once per dependency [1].\n\nA typical example is a database session that is closed when finished:\n\n```python\nasync def get_db():\n    db = DBSession()\n    try:\n        yield db\n    finally:\n        db.close()\n```\n\n- The code up to and including `yield` runs before the response is created, and the yielded value is injected into *path operations* and other dependencies [4].\n- The code after the `yield` runs after the response is sent [4].\n- Wrapping the `yield` in `try` lets you receive any exception raised while the dependency was in use, and you can catch specific ones with `except SomeException` [3].\n- Using `finally` makes sure the exit steps run whether or not there was an exception [3].\n- You can use either `async` or regular functions [4].\n\n**Closing earlier:** By default, the exit code runs after the response is sent [2]. If you won't need the dependency after the *path operation function* returns, use `Depends(scope=\"function\")` so it closes after the function returns but before the response is sent [2]:\n\n```python\n@app.get(\"/users/me\")\ndef get_user_me(username: Annotated[str, Depends(get_username, scope=\"function\")]):\n    return username\n```\n\nWithout a specified `scope`, a dependency with `yield` defaults to `\"request\"`, which ends after the response is sent [2].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "Every claim in the answer matches the passages (yield vs return, single yield, try/finally, async or sync, scope behavior, defaults), and it directly answers how to clean up resources with a yield dependency."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 5.418,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/",
+          "heading": "Dependencies with yield"
+        },
+        {
+          "n": 2,
+          "score": 5.064,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/",
+          "heading": "Early exit and `scope`"
+        },
+        {
+          "n": 3,
+          "score": 4.057,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/",
+          "heading": "A dependency with `yield` and `try`"
+        },
+        {
+          "n": 4,
+          "score": 3.282,
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/",
+          "heading": "A database dependency with `yield`"
+        },
+        {
+          "n": 5,
+          "score": 2.846,
+          "url": "https://fastapi.tiangolo.com/advanced/advanced-dependencies/",
+          "heading": "Dependencies with `yield` and `StreamingResponse`, Technical Details"
+        }
+      ]
+    },
+    {
+      "q": "How do I run my app under a debugger?",
+      "expected_url": "https://fastapi.tiangolo.com/tutorial/debugging/",
+      "rank": 1,
+      "refused": false,
+      "answer": "Because the Uvicorn server is run directly from your code, you can run your FastAPI program straight from a debugger [1]. It will start the server and stop at your breakpoints [1].\n\n**Visual Studio Code**\n* Go to the \"Debug\" panel. [1]\n* Choose \"Add configuration...\" and select \"Python\". [1]\n* Run the debugger with the option \"`Python: Current File (Integrated Terminal)`\". [1]\n\n**PyCharm**\n* Open the \"Run\" menu. [1]\n* Select \"Debug...\". [1]\n* In the context menu that appears, select the file to debug (in this case, `main.py`). [1]\n\nThe passages show the `uvicorn.run(app, host=\"0.0.0.0\", port=8000)` line running when the file is executed directly, because `__name__` is then `\"__main__\"`. It does not run when the file is imported by another module [2].",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 4,
+        "reason": "All claims are supported by passages [1] and [2], including the VS Code and PyCharm steps; the final `__name__` paragraph is accurate but tangential, and the answer does not note that the `uvicorn.run` block must exist in the file for direct debugging."
+      },
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 5.877,
+          "url": "https://fastapi.tiangolo.com/tutorial/debugging/",
+          "heading": "Run your code with your debugger"
+        },
+        {
+          "n": 2,
+          "score": 0.484,
+          "url": "https://fastapi.tiangolo.com/tutorial/debugging/",
+          "heading": "About `__name__ == \"__main__\"`"
+        },
+        {
+          "n": 3,
+          "score": -5.386,
+          "url": "https://fastapi.tiangolo.com/tutorial/first-steps/",
+          "heading": "Recap"
+        },
+        {
+          "n": 4,
+          "score": -5.968,
+          "url": "https://fastapi.tiangolo.com/tutorial/first-steps/",
+          "heading": "Configure the app `entrypoint` in `pyproject.toml`"
+        },
+        {
+          "n": 5,
+          "score": -6.577,
+          "url": "https://fastapi.tiangolo.com/tutorial/",
+          "heading": "Run the code"
+        }
+      ]
+    },
+    {
+      "q": "How do I render Jinja2 templates?",
+      "expected_url": "https://fastapi.tiangolo.com/advanced/templates/",
+      "rank": 2,
+      "refused": false,
+      "answer": "Use the `Jinja2Templates` class, which you can import from `fastapi.templating` [1]. The steps are:\n\n- Import `Jinja2Templates`. [2]\n- Create a `templates` object that you can reuse later. [2]\n- Declare a `Request` parameter in the *path operation* that will return a template. [2]\n- Return `templates.TemplateResponse`, passing the request, the template name, and a \"context\" dictionary of key-value pairs for use inside the Jinja2 template. [2]\n\n```python\nfrom fastapi import FastAPI, Request\nfrom fastapi.responses import HTMLResponse\nfrom fastapi.staticfiles import StaticFiles\nfrom fastapi.templating import Jinja2Templates\n\napp = FastAPI()\n\napp.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\n\n\ntemplates = Jinja2Templates(directory=\"templates\")\n\n\n@app.get(\"/items/{id}\", response_class=HTMLResponse)\nasync def read_item(request: Request, id: str):\n    return templates.TemplateResponse(\n        request=request, name=\"item.html\", context={\"id\": id}\n    )\n```\n[2]\n\nIn the template, values from the context are available, for example `Item ID: {{ id }}` shows the `id` from the context dict [4]. Setting `response_class=HTMLResponse` lets the docs UI know the response is HTML [2].\n\nNote that before FastAPI 0.108.0 and Starlette 0.29.0, `name` was the first parameter, and the `request` was passed as part of the context [2].",
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 7.903,
+          "url": "https://fastapi.tiangolo.com/reference/templating/",
+          "heading": "Templating - `Jinja2Templates`"
+        },
+        {
+          "n": 2,
+          "score": 7.685,
+          "url": "https://fastapi.tiangolo.com/advanced/templates/",
+          "heading": "Using `Jinja2Templates`"
+        },
+        {
+          "n": 3,
+          "score": 5.385,
+          "url": "https://fastapi.tiangolo.com/advanced/templates/",
+          "heading": "Template `url_for` Arguments"
+        },
+        {
+          "n": 4,
+          "score": 4.787,
+          "url": "https://fastapi.tiangolo.com/advanced/templates/",
+          "heading": "Template Context Values"
+        },
+        {
+          "n": 5,
+          "score": 4.779,
+          "url": "https://fastapi.tiangolo.com/advanced/templates/",
+          "heading": "URL paths in templates"
+        }
+      ]
+    },
+    {
+      "q": "What is the capital of France?",
+      "expected_url": null,
+      "rank": null,
+      "refused": true,
+      "answer": "I don't have enough information in the docs to answer that.",
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": -11.154,
+          "url": "https://fastapi.tiangolo.com/tutorial/cors/",
+          "heading": "Steps"
+        },
+        {
+          "n": 2,
+          "score": -11.215,
+          "url": "https://fastapi.tiangolo.com/tutorial/cors/",
+          "heading": "Origin"
+        },
+        {
+          "n": 3,
+          "score": -11.228,
+          "url": "https://fastapi.tiangolo.com/tutorial/first-steps/",
+          "heading": "Configure the app `entrypoint` in `pyproject.toml`"
+        },
+        {
+          "n": 4,
+          "score": -11.228,
+          "url": "https://fastapi.tiangolo.com/deployment/https/",
+          "heading": "Let's Encrypt"
+        },
+        {
+          "n": 5,
+          "score": -11.23,
+          "url": "https://fastapi.tiangolo.com/tutorial/frontend/",
+          "heading": "Frontend"
+        }
+      ]
+    },
+    {
+      "q": "How do I train a neural network in PyTorch?",
+      "expected_url": null,
+      "rank": null,
+      "refused": true,
+      "answer": "I don't have enough information in the docs to answer that.",
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": -10.589,
+          "url": "https://fastapi.tiangolo.com/_llm-test/",
+          "heading": "HTML \"dfn\" elements"
+        },
+        {
+          "n": 2,
+          "score": -10.649,
+          "url": "https://fastapi.tiangolo.com/tutorial/body/",
+          "heading": "Editor support"
+        },
+        {
+          "n": 3,
+          "score": -10.895,
+          "url": "https://fastapi.tiangolo.com/tutorial/schema-extra-example/",
+          "heading": "Extra JSON Schema data in Pydantic models"
+        },
+        {
+          "n": 4,
+          "score": -10.998,
+          "url": "https://fastapi.tiangolo.com/tutorial/response-model/",
+          "heading": "Response Model - Return Type"
+        },
+        {
+          "n": 5,
+          "score": -11.148,
+          "url": "https://fastapi.tiangolo.com/tutorial/query-param-models/",
+          "heading": "Query Parameters with a Pydantic Model"
+        }
+      ]
+    },
+    {
+      "q": "How do I configure middleware in Django?",
+      "expected_url": null,
+      "rank": null,
+      "refused": true,
+      "answer": "I don't have enough information in the docs to answer that.",
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": 4.305,
+          "url": "https://fastapi.tiangolo.com/advanced/wsgi/",
+          "heading": "Using `WSGIMiddleware`"
+        },
+        {
+          "n": 2,
+          "score": 3.263,
+          "url": "https://fastapi.tiangolo.com/tutorial/cors/",
+          "heading": "Use `CORSMiddleware`"
+        },
+        {
+          "n": 3,
+          "score": 0.558,
+          "url": "https://fastapi.tiangolo.com/tutorial/middleware/",
+          "heading": "Multiple middleware execution order"
+        },
+        {
+          "n": 4,
+          "score": -0.73,
+          "url": "https://fastapi.tiangolo.com/advanced/middleware/",
+          "heading": "Adding ASGI middlewares"
+        },
+        {
+          "n": 5,
+          "score": -0.896,
+          "url": "https://fastapi.tiangolo.com/advanced/wsgi/",
+          "heading": "Including WSGI - Flask, Django, others"
+        }
+      ]
+    },
+    {
+      "q": "What is the best pizza topping?",
+      "expected_url": null,
+      "rank": null,
+      "refused": true,
+      "answer": "I don't have enough information in the docs to answer that.",
+      "judge": null,
+      "retrieved": [
+        {
+          "n": 1,
+          "score": -10.814,
+          "url": "https://fastapi.tiangolo.com/async/",
+          "heading": "Concurrent Burgers"
+        },
+        {
+          "n": 2,
+          "score": -10.943,
+          "url": "https://fastapi.tiangolo.com/async/",
+          "heading": "Parallel Burgers"
+        },
+        {
+          "n": 3,
+          "score": -10.987,
+          "url": "https://fastapi.tiangolo.com/alternatives/",
+          "heading": "[Starlette](https://starlette.dev/)"
+        },
+        {
+          "n": 4,
+          "score": -11.215,
+          "url": "https://fastapi.tiangolo.com/advanced/custom-response/",
+          "heading": "`JSONResponse`"
+        },
+        {
+          "n": 5,
+          "score": -11.221,
+          "url": "https://fastapi.tiangolo.com/alternatives/",
+          "heading": "[Sanic](https://sanic.readthedocs.io/en/latest/)"
+        }
+      ]
+    }
+  ]
+}
